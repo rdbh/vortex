@@ -1,0 +1,7 @@
+{
+    "name":"string",
+    "keywords":"keyword object",
+    "results":"results object",
+    "user":"string",
+    "websites":"list of strings" 
+}
