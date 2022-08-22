@@ -2,7 +2,7 @@ import os
 import json
 
 ## JSON
-def loadJson(filePath):
+def loadJson(filePath: str) -> list:
     newList = []
     try:
         loadFile = open(filePath, "r")
@@ -11,30 +11,40 @@ def loadJson(filePath):
     newList = json.load(loadFile)
     loadFile.close()
     # returns a list
-
     return newList
 
-def saveJson(filePath: str, data: list):
+def saveJson(filePath: str, data: list, opr: str = "a"):
     # Saves data to a file as a JSON object
     # Expects a list of dictionaries
-    if os.path.exists(filePath):
+    if opr == "a":
+        if os.path.exists(filePath):
+            try:
+                saveFile = open(filePath, "r")
+                oldList = json.load(saveFile)
+                saveFile.close()
+            except: 
+                return "Error opening existing file"    
+        else:
+            oldList = []
         try:
-            saveFile = open(filePath, "r")
-            oldList = json.load(saveFile)
-            saveFile.close()
-        except: 
-            return "Error opening existing file"    
-    else:
-        oldList = []
-    try:
-        saveFile = open(filePath, "w")
-    except:
-        return f"Could not write to {filePath}"
-    newList = oldList
-    for obj in data:
-        newList.append(obj)
-    json.dump(newList, saveFile)
-    saveFile.close()
+            saveFile = open(filePath, "w")
+        except:
+            return f"Could not write to {filePath}"
+        newList = oldList
+        for obj in data:
+            newList.append(obj)
+        json.dump(newList, saveFile)
+        saveFile.close()
+    elif opr == "o":
+        try:
+            saveFile = open(filePath, "w")
+        except:
+            return f"Could not write to {filePath}"
+        json.dump(data, saveFile)
+        saveFile.close()
+    else: 
+        return "Invalid operation"
+    
     return "JSON Saved"
 
 ## Strings
