@@ -99,18 +99,7 @@ def delete_case(old_case: dict):
 
 
 # Keywords
-def userdict():
-    userdict = {"FName": [], "LName": [], "Email": []}
-    get_fname = input("Type the first name of the user needing an alert: ")
-    get_lname = input("Type the last name of the user needing an alert: ")
-    get_email = input("Type the email address of the user needing an alert: ")
 
-    userdict["FName"] = get_fname
-    userdict["LName"] = get_lname
-    userdict["Email"] = get_email
-
-    with open('users_config.txt', 'w') as convert_file:
-        convert_file.write(json.dumps(userdict))
 
 # Results
 
@@ -131,7 +120,18 @@ def getWebsites(file_path: str = current_case["websites"]):
             caseObj.get("sites")
 
 # Users
+def userdict():
+    userdict = {"FName": [], "LName": [], "Email": []}
+    get_fname = input("Type the first name of the user needing an alert: ")
+    get_lname = input("Type the last name of the user needing an alert: ")
+    get_email = input("Type the email address of the user needing an alert: ")
 
+    userdict["FName"] = get_fname
+    userdict["LName"] = get_lname
+    userdict["Email"] = get_email
+
+    with open('users_config.txt', 'w') as convert_file:
+        convert_file.write(json.dumps(userdict))
 
 def user_searches():
     user_name = input("What user are you looking for? ")
@@ -155,17 +155,7 @@ def user_searches():
 
 
 def main():
-    test1 = {
-        "name": "Planetary Destruction",
-        "description": "Searching for the disappearance of Alderaan",
-        "keywords": "keywords_pd1.json",
-        "results": "results_pd1.json",
-        "user": "Kenobi",
-        "websites": "websitespd1.json"
-    }
-    print(create_case(test1))
-    print(get_cases())
-    print(get_case_id({"id":"66b5bb79-40b9-4550-a09e-1c7f44f575b4"}))
+    pass
 
 if __name__ == "__main__":
     clear()

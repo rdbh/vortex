@@ -16,12 +16,8 @@ def delete(filename: str, data: str):
         if data == testkey["keyword"]:
             print(f"{data} found")
             newList.remove(testkey)
-            
-        else:
-            print(f"{data} not found")
 
     # Save the modified data
-    print(newList)
     return fh.saveJson(filename, newList, "o")
 
 def load(filename: str):
