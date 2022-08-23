@@ -5,10 +5,7 @@ import os
 #import alert
 import config
 import datamanager as dm
-import keywordmanager
-#import resultmanager
 #import searcher
-import websitemanager as websites
 
 clear = lambda: os.system('cls')
 
@@ -18,46 +15,9 @@ case = {
     "name":"Choose case"
 }
 
-## Keyword search
-
-    # Search keywords on a certain websites
-
-    # List of keywords
-    # Get keywords from a file
-        ## or
-    # Get keywords from keyboard
-        ## or
-    # Get keywords from website (OSINT list?)
-
-        # Create variations of keywords
-
-        # synonyms
-        # other languages
-        # l33sp3@k
-        # name spelling
-
-    # List websites
-    # Get list from file
-        ## or
-    # Get the list from a search engine
-        ## or
-    # Get the list from other search results
-        ## or
-    # Get the list from start.me
-
-## Alert system
-
-    # Alert on changes to searches
-    # Configurable search alerts (priority?)
-
-    # Alert distribution via console
-        ## or
-    # Alert distribution via messaging
-        ## or
-    # Alert distribution via web/social media
-
 def add_keyword():
     keyword = input("New keyword to add: ")
+    description = input("Keyword description: ")
     language = input("Keyword language: ")
     translation = input("Translation: ")
     #case = input("Enter case: ")
@@ -67,10 +27,11 @@ def add_keyword():
 
     newkeyword = {
         "keyword":keyword,
+        "description":description,
         "language":language,
         "translation":translation
     }
-    keywordmanager.save(filename, newkeyword)
+    dm.saveKeyword(newkeyword)
 
 def case_info():
     global case
