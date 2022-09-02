@@ -18,7 +18,7 @@ import requests
 
 
 HTTP_TIMEOUT = 10
-Web_List = "./data/Osint_WebsiteList.txt"
+WEB_LIST = "./data/Osint_WebsiteList.txt"
 
 
 def clear(): return os.system('cls')
@@ -109,7 +109,7 @@ def main():
     clear()
     print("Welcome to Vortex FAMILIA!")
     # check()
-    websites = list(Web_List)
+    websites = list(WEB_LIST)
     for site in websites:
         print(site)
 

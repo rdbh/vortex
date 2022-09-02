@@ -8,7 +8,7 @@ import datamanager as dm
 import menu
 #import searcher
 
-
+# Screen Clearance
 def clear(): return os.system('cls')
 
 
@@ -84,61 +84,31 @@ def discover():
     # Sort by search engine
 
 
-def menu():
-    # menu options
-    print(config.BANNER)
-    print("Enter [A] to add a keyword")
-    print("Enter [C] to check a web addresses")
-    print("Enter [D] to change the working directory")
-    print("Enter [G] to get case data")
-    print("Enter [S] to add a website")
-    print("Enter [W] to add a keyword")
-    print()
-    caseName = case["name"]
-    print(f"Current case is:\n\t{caseName}")
-    print(f"Current working directory is:\n\t{work_dir}")
-
-    # get user input
-    choice = input("\nEnter X to quit: ")
-    print("\n\n")
-
-    if choice.upper() == 'X':
-        print("Exiting")
-        quit()
-    elif choice.upper() == 'A':
-        add_keyword()
-    elif choice.upper() == 'C':
-        check_web()
-    elif choice.upper() == 'G':
-        case_info()
-    # Change Settings
-    elif choice.upper() == 'S':
-        change_settings()
-    # Change Settings
-    elif choice.upper() == 'W':
-        change_dir()
-    # handle non-options
-    else:
-        print("Please select a valid option")
-
-
 def runtime():
     main_menu = menu.Menu(title=config.BANNER)
     alert_menu = menu.Menu(title="Alerts")
     case_menu = menu.Menu(title="Cases")
+    config_menu = menu.Menu(title="Configuration")
     keyword_menu = menu.Menu(title="Keywords")
     search_menu = menu.Menu(title="Searches")
     website_menu = menu.Menu(title="Websites")
     main_menu.set_options([
+        ("Alert Menu", alert_menu.open),
         ("Case Menu", case_menu.open),
-        {"Keyword Menu", keyword_menu.open}
-        ("Exit", main.close)
+        ("Configuration Menu", config_menu.open),
+        ("Keyword Menu", keyword_menu.open),
+        ("Search Menu", search_menu.open),
+        ("Website Menu", website_menu.open),
+        ("Exit", main_menu.close)
     ])
     alert_menu.set_options([
         ("Return to main menu", alert_menu.close)
     ])
     case_menu.set_options([
         ("Return to main menu", case_menu.close)
+    ])
+    config_menu.set_options([
+        ("Return to main menu", config_menu.close)
     ])
     keyword_menu.set_options([
         ("Return to main menu", keyword_menu.close)

@@ -11,7 +11,15 @@ import resultsmanager_2_Vince as rsm
 def clear(): return os.system('cls')
 CASE_PATH = config.SAVE_DIR + "/" + config.CASE_FILE
 
-current_case = {}
+current_case = {
+    "id":"0",
+    "name":"select case",
+    "description":"",
+    "keywords":"./",
+    "results":"./",
+    "user":"",
+    "websites":"./" 
+}
 
 def caseObj():  # Building the case dictionary/json object
     record = {"name": [], "keywords": [],
